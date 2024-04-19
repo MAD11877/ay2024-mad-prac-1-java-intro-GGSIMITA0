@@ -22,7 +22,7 @@ public class Question5
     int mode = findMode(arr);
 
     // Print the mode
-    System.out.println("The mode is: " + mode);
+    System.out.println(mode);
 
     in.close(); // Close the Scanner to avoid resource leaks
   }
