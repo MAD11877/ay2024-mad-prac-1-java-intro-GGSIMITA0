@@ -2,31 +2,46 @@ import java.util.Scanner;
 
 public class Question5
 {
-  public static void main(String[] args)
-  {
-    /**
-     * Prompt the user for number. This input indicates the number of integers the user will be entering next. 
-     * Print out the mode (highest occurrence) from the set of integers. 
-     *    e.g.
-     *     > 5
-     *     > 2
-     *     > 4
-     *     > 1
-     *     > 3
-     *     > 4
-     *     4
-     * 
-     *    e.g.
-     *     > 4
-     *     > 2
-     *     > 2
-     *     > 3
-     *     > 3
-     *     2
-     * Hint: Use a loop to get input. Use another 2 loops to find the mode
-     */
-     
+  public static void main(String[] args) {
     Scanner in = new Scanner(System.in);
-    
+
+    // Prompt the user for the number of elements
+    //System.out.print("Enter the number of elements: ");
+    int numElements = in.nextInt();
+
+    // Declare the array to store the integers
+    int[] arr = new int[numElements];
+
+    // Get the integers from the user
+    //System.out.println("Enter the integers:");
+    for (int i = 0; i < numElements; i++) {
+      arr[i] = in.nextInt();
+    }
+
+    // Find the mode using a separate function
+    int mode = findMode(arr);
+
+    // Print the mode
+    System.out.println("The mode is: " + mode);
+
+    in.close(); // Close the Scanner to avoid resource leaks
   }
+
+  // Function to find the mode of an array
+  public static int findMode(int[] arr) {
+    int maxValue = 0;
+    int maxCount = 0;
+
+    for (int i = 0; i < arr.length; i++) {
+      int count = 0;
+      for (int j = 0; j < arr.length; j++) {
+        if (arr[i] == arr[j]) {
+          count++;
+        }
+      }
+      if (count > maxCount) {
+        maxCount = count;
+        maxValue = arr[i];
+      }
+    }
 }
